@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { ContactPage } from '../pages/contact/contact';
+import { FavoritesPage } from '../pages/favorites/favorites';
 
 
 @Component({
@@ -27,7 +28,8 @@ pages: Array<{title: string, icon:string, component: any}>;
         { title: 'Home', icon: 'home', component: HomePage },
         { title: 'About us', icon: 'information-circle', component: AboutPage },
         { title: 'Menu', icon:'list-box', component: MenuPage },
-        { title: 'Contact us', icon:'contact', component: ContactPage }
+        { title: 'Contact us', icon:'contact', component: ContactPage },
+        { title: 'My Favorites', icon: 'heart', component: FavoritesPage }
     ];
 
   }
