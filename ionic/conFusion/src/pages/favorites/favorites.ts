@@ -76,6 +76,7 @@ private alertCtrl: AlertController,
     
 
     alert.present();
+      
     item.close();
 
   }
