@@ -31,7 +31,9 @@ favorite: boolean;
     public modalCtrl: ModalController) {
       
     this.dish = navParams.get('dish');
+      
     this.favorite = favoriteservice.isFavorite(this.dish.id);
+      
     this.numcomments = this.dish.comments.length;
     let total = 0;
     this.dish.comments.forEach(comment => total += comment.rating );
