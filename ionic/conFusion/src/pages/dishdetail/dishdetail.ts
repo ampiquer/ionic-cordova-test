@@ -4,6 +4,7 @@ import { Dish } from '../../shared/dish';
 import { Comment } from '../../shared/comment';
 import { FavoriteProvider } from '../../providers/favorite/favorite';
 import { CommentPage } from '../../pages/comment/comment';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /** 
  * Generated class for the DishdetailPage page.
@@ -28,7 +29,8 @@ favorite: boolean;
   @Inject('BaseURL') private BaseURL,
   private toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+  private socialSharing: SocialSharing) {
       
     this.dish = navParams.get('dish');
       
@@ -57,7 +59,34 @@ presentActionSheet() {
             console.log('adding a comment');
             this.openComment();
           }
-        }, {
+        }, 
+          
+          {
+              text: 'Share via Facebook',
+                handler: () => {
+                this.socialSharing.shareViaFacebook(
+                    this.dish.name + '--' + this.dish.description,
+                    this.BaseURL + this.dish.image, '')
+                    
+                    .then(() => console.log('Posted auccessfully to Facebook'))
+                    .catch(() => console.log('Failed to post to Facebook'));
+                }
+              
+          },
+      
+          {
+                text: 'Share via Twitter',
+                handler: () => {
+                this.socialSharing.shareViaTwitter(
+                    this.dish.name + '--' + this.dish.description,
+                    this.BaseURL + this.dish.image, '')
+                    
+                    .then(() => console.log('Posted auccessfully to Facebook'))
+                    .catch(() => console.log('Failed to post to Facebook'));
+                }
+          },
+          
+          {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
