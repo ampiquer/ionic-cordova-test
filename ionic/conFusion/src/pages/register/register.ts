@@ -68,4 +68,29 @@ export class RegisterPage {
     console.log(this.registerForm.value);
     this.dismiss();
   }
+    
+    ionViewDidLoad() {
+    console.log('ionViewDidLoad RegisterPage');
+  }
+      
+getFromLibrary(){
+    const options:CameraOptions={
+      quality:100,
+      targetHeight:100,
+      targetWidth:100,
+      correctOrientation:true,
+      destinationType:this.camera.DestinationType.FILE_URI,
+      encodingType:this.camera.EncodingType.PNG,
+      mediaType:this.camera.MediaType.PICTURE,
+      cameraDirection:this.camera.Direction.FRONT,
+      sourceType:this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+    this.camera.getPicture(options)
+    .then((imageData)=>{
+      this.image=imageData;
+      console.log(this.image);
+    },
+  (err)=>console.log(err))
+
+  }
 }

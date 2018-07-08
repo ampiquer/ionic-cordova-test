@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+
 
 /**
  * Generated class for the ContactPage page.
@@ -17,7 +19,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class ContactPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  private emailComposer: EmailComposer) {
+  private emailComposer: EmailComposer,
+  private call: CallNumber) {
   }
 
   ionViewDidLoad() {
@@ -32,6 +35,10 @@ let email = {
     isHtml: true
 };
     this.emailComposer.open(email);
+}
+    
+callRestaurant() {
+    this.call.callNumber('+852 1234 5678', false);
 }
 
 }
